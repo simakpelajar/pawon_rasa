@@ -6,7 +6,7 @@ import 'package:pawon_rasa/shared/core/constant/app_colors.dart';
 import 'package:pawon_rasa/shared/core/constant/app_assets.dart';
 import 'package:pawon_rasa/shared/core/constant/app_text_styles.dart';
 
-class RestaurantCardNew extends StatefulWidget {
+class RestaurantCardNew extends StatelessWidget {
   final RestaurantEntity restaurant;
   final VoidCallback? onTap;
   final bool isSkeleton;
@@ -19,18 +19,11 @@ class RestaurantCardNew extends StatefulWidget {
   });
 
   @override
-  State<RestaurantCardNew> createState() => _RestaurantCardNewState();
-}
-
-class _RestaurantCardNewState extends State<RestaurantCardNew> {
-  bool _isExpanded = false;
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         GestureDetector(
-          onTap: widget.onTap,
+          onTap: onTap,
           child: Container(
             margin: EdgeInsets.only(bottom: 0),
             decoration: BoxDecoration(
@@ -58,7 +51,7 @@ class _RestaurantCardNewState extends State<RestaurantCardNew> {
                   children: [
                     Stack(
                       children: [
-                        if (widget.isSkeleton)
+                        if (isSkeleton)
                           Container(
                             width: 35.w,
                             color: AppColors.surfaceVariantOf(context),
@@ -66,7 +59,7 @@ class _RestaurantCardNewState extends State<RestaurantCardNew> {
                         else
                           CachedNetworkImage(
                             imageUrl: AppAssets.getImageUrl(
-                              widget.restaurant.pictureId,
+                              restaurant.pictureId,
                             ),
                             width: 35.w,
                             fit: BoxFit.cover,
@@ -116,7 +109,7 @@ class _RestaurantCardNewState extends State<RestaurantCardNew> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    widget.restaurant.name,
+                                    restaurant.name,
                                     style: AppTextStyles.h3.copyWith(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 18.sp,
@@ -156,7 +149,7 @@ class _RestaurantCardNewState extends State<RestaurantCardNew> {
                                       ),
                                       SizedBox(width: 1.5.w),
                                       Text(
-                                        widget.restaurant.rating.toString(),
+                                        restaurant.rating.toString(),
                                         style: AppTextStyles.bodySmall.copyWith(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 13.sp,
@@ -188,7 +181,7 @@ class _RestaurantCardNewState extends State<RestaurantCardNew> {
                                 SizedBox(width: 2.w),
                                 Expanded(
                                   child: Text(
-                                    widget.restaurant.city,
+                                    restaurant.city,
                                     style: AppTextStyles.bodySmall.copyWith(
                                       color: AppColors.textSecondaryOf(context),
                                       fontSize: 14.sp,
@@ -210,76 +203,62 @@ class _RestaurantCardNewState extends State<RestaurantCardNew> {
           ),
         ),
 
-        GestureDetector(
-          onTap: () {
-            setState(() {
-              _isExpanded = !_isExpanded;
-            });
-          },
-          child: Container(
-            margin: EdgeInsets.only(bottom: 2.h),
-            decoration: BoxDecoration(
-              color: AppColors.surfaceOf(context),
-              borderRadius: BorderRadius.circular(3.w),
-              border: Border.all(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? Colors.white.withOpacity(0.12)
-                    : Colors.black.withOpacity(0.08),
-                width: 1.2,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.06),
-                  blurRadius: 3,
-                  offset: Offset(0, 1),
-                )
-              ],
+        Container(
+          margin: EdgeInsets.only(bottom: 2.h),
+          decoration: BoxDecoration(
+            color: AppColors.surfaceOf(context),
+            borderRadius: BorderRadius.circular(3.w),
+            border: Border.all(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white.withOpacity(0.12)
+                  : Colors.black.withOpacity(0.08),
+              width: 1.2,
             ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.description_outlined,
-                        size: 4.5.w,
-                        color: AppColors.textSecondaryOf(context),
-                      ),
-                      SizedBox(width: 2.w),
-                      Expanded(
-                        child: Text(
-                          'Detail Restorant',
-                          style: AppTextStyles.bodySmall.copyWith(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13.5.sp,
-                            color: AppColors.textSecondaryOf(context),
-                          ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.06),
+                blurRadius: 3,
+                offset: Offset(0, 1),
+              )
+            ],
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 3.w, vertical: 2.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.description_outlined,
+                      size: 4.5.w,
+                      color: AppColors.textSecondaryOf(context),
+                    ),
+                    SizedBox(width: 2.w),
+                    Expanded(
+                      child: Text(
+                        'Detail Restorant',
+                        style: AppTextStyles.bodySmall.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 13.5.sp,
+                          color: AppColors.textSecondaryOf(context),
                         ),
-                      ),
-                      Icon(
-                        _isExpanded
-                            ? Icons.keyboard_arrow_up
-                            : Icons.keyboard_arrow_down,
-                        size: 4.5.w,
-                        color: AppColors.textSecondaryOf(context),
-                      ),
-                    ],
-                  ),
-                  if (_isExpanded) ...[
-                    SizedBox(height: 1.5.h),
-                    Text(
-                      widget.restaurant.description,
-                      style: AppTextStyles.bodySmall.copyWith(
-                        color: AppColors.textSecondaryOf(context),
-                        fontSize: 13.sp,
-                        height: 1.6,
                       ),
                     ),
                   ],
-                ],
-              ),
+                ),
+                SizedBox(height: 1.5.h),
+                Text(
+                  restaurant.description,
+                  style: AppTextStyles.bodySmall.copyWith(
+                    color: AppColors.textSecondaryOf(context),
+                    fontSize: 13.sp,
+                    height: 1.6,
+                  ),
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
             ),
           ),
         ),
