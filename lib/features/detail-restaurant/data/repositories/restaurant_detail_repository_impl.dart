@@ -14,7 +14,8 @@ class RestaurantDetailRepositoryImpl implements RestaurantDetailRepository {
 
   @override
   Future<Either<Failure, RestaurantDetailEntity>> getRestaurantDetail(
-      String id) async {
+    String id,
+  ) async {
     try {
       final response = await remoteDatasource.getRestaurantDetail(id);
 
@@ -47,7 +48,11 @@ class RestaurantDetailRepositoryImpl implements RestaurantDetailRepository {
         return Left(ServerFailure(response.message));
       }
 
-      return Right(RestaurantDetailMapper.toCustomerReviewEntityList(response.customerReviews));
+      return Right(
+        RestaurantDetailMapper.toCustomerReviewEntityList(
+          response.customerReviews,
+        ),
+      );
     } on DioException catch (e, st) {
       return Left(e.toFailure(stackTrace: st));
     } catch (e, st) {

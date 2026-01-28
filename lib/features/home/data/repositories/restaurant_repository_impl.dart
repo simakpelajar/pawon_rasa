@@ -31,7 +31,8 @@ class RestaurantRepositoryImpl implements RestaurantRepository {
 
   @override
   Future<Either<Failure, List<RestaurantEntity>>> searchRestaurants(
-      String query) async {
+    String query,
+  ) async {
     try {
       final response = await remoteDatasource.searchRestaurants(query);
 

@@ -39,10 +39,7 @@ class HeaderSection extends StatelessWidget {
             ),
           ),
           _buildDecorativeCircles(),
-          SafeArea(
-            bottom: false,
-            child: _buildContent(),
-          ),
+          SafeArea(bottom: false, child: _buildContent()),
         ],
       ),
     );
@@ -104,10 +101,7 @@ class HeaderSection extends StatelessWidget {
                   ],
                 ),
               ),
-              Transform.scale(
-                scale: 0.8,
-                child: const ThemeToggleButton(),
-              ),
+              Transform.scale(scale: 0.8, child: const ThemeToggleButton()),
             ],
           ),
           SizedBox(height: AppSizes.paddingS),
@@ -128,14 +122,17 @@ class HeaderSection extends StatelessWidget {
   }
 
   Widget _buildFeatureChips() {
-    return Wrap(
-      spacing: 1.w,
-      runSpacing: 1.h,
-      children: [
-        _featureChip(AppAssets.iconNusantaraFlavors, 'Nusantara flavors'),
-        _featureChip(AppAssets.iconTopRestaurants, 'Top restaurants'),
-        _featureChip(AppAssets.iconFastDelivery, 'Fast delivery'),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          _featureChip(AppAssets.iconNusantaraFlavors, 'Nusantara flavors'),
+          SizedBox(width: 2.w),
+          _featureChip(AppAssets.iconTopRestaurants, 'Top restaurants'),
+          SizedBox(width: 2.w),
+          _featureChip(AppAssets.iconFastDelivery, 'Fast delivery'),
+        ],
+      ),
     );
   }
 
@@ -150,11 +147,7 @@ class HeaderSection extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Image.asset(
-            iconPath,
-            height: 17.sp,
-            width: 17.sp,
-          ),
+          Image.asset(iconPath, height: 17.sp, width: 17.sp),
           SizedBox(width: 2.2.w),
           Text(
             text,
@@ -169,6 +162,4 @@ class HeaderSection extends StatelessWidget {
       ),
     );
   }
-
- 
 }

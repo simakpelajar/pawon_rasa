@@ -13,7 +13,5 @@ abstract class RestaurantRemoteDatasource {
   Future<RestaurantListResponse> getRestaurants();
 
   @GET('/search')
-  Future<RestaurantListResponse> searchRestaurants(
-    @Query('q') String query,
-  );
+  Future<RestaurantListResponse> searchRestaurants(@Query('q') String query);
 }

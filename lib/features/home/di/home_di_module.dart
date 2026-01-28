@@ -6,7 +6,6 @@ import 'package:pawon_rasa/features/home/domain/usecase/get_restaurants_usecase.
 import 'package:pawon_rasa/features/home/domain/usecase/search_restaurants_usecase.dart';
 import 'package:pawon_rasa/features/home/presentation/providers/home_controller.dart';
 
-
 void registerHomeDependencies(GetIt getIt) {
   // Remote Datasources
   getIt.registerLazySingleton<RestaurantRemoteDatasource>(
@@ -19,12 +18,8 @@ void registerHomeDependencies(GetIt getIt) {
   );
 
   // Use Cases
-  getIt.registerFactory(
-    () => GetRestaurantsUseCase(repository: getIt()),
-  );
-  getIt.registerFactory(
-    () => SearchRestaurantsUseCase(repository: getIt()),
-  );
+  getIt.registerFactory(() => GetRestaurantsUseCase(repository: getIt()));
+  getIt.registerFactory(() => SearchRestaurantsUseCase(repository: getIt()));
 
   // Controllers
   getIt.registerFactory(

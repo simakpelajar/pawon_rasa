@@ -6,7 +6,6 @@ import 'package:pawon_rasa/features/detail-restaurant/domain/usecase/add_review_
 import 'package:pawon_rasa/features/detail-restaurant/domain/usecase/get_restaurant_detail_usecase.dart';
 import 'package:pawon_rasa/features/detail-restaurant/presentation/providers/detail_controller.dart';
 
-
 void registerDetailDependencies(GetIt getIt) {
   // Remote Datasources
   getIt.registerLazySingleton<RestaurantDetailRemoteDatasource>(
@@ -19,12 +18,8 @@ void registerDetailDependencies(GetIt getIt) {
   );
 
   // Use Cases
-  getIt.registerFactory(
-    () => GetRestaurantDetailUseCase(repository: getIt()),
-  );
-  getIt.registerFactory(
-    () => AddReviewUseCase(repository: getIt()),
-  );
+  getIt.registerFactory(() => GetRestaurantDetailUseCase(repository: getIt()));
+  getIt.registerFactory(() => AddReviewUseCase(repository: getIt()));
 
   // Controllers
   getIt.registerFactory(

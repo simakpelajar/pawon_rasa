@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:pawon_rasa/shared/core/types/exception.dart';
 import 'package:pawon_rasa/shared/core/types/failure.dart';
+
 class Unit {
   const Unit();
 }
+
 sealed class Result<T> {
   const Result();
   R fold<R>(R Function(Failure) onErr, R Function(T) onOk);
@@ -35,7 +37,7 @@ Future<Result<T>> guard<T>(Future<T> Function() task) async {
   } on Failure catch (f) {
     return Err(f);
   } on DioException catch (e, st) {
-    return Err(e.toFailure(stackTrace: st)); 
+    return Err(e.toFailure(stackTrace: st));
   } on Exception catch (e, st) {
     return Err(UnknownFailure(e, stackTrace: st));
   }

@@ -19,7 +19,8 @@ class RestaurantDetailMapper {
   }
 
   static CustomerReviewEntity toCustomerReviewEntity(
-      CustomerReviewModel model) {
+    CustomerReviewModel model,
+  ) {
     return CustomerReviewEntity(
       name: model.name,
       review: model.review,
@@ -44,7 +45,8 @@ class RestaurantDetailMapper {
   }
 
   static List<CustomerReviewEntity> toCustomerReviewEntityList(
-      List<CustomerReviewModel> models) {
+    List<CustomerReviewModel> models,
+  ) {
     return models.map((model) => toCustomerReviewEntity(model)).toList();
   }
 }

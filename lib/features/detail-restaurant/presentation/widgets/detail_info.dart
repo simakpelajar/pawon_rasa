@@ -7,10 +7,7 @@ import 'package:sizer/sizer.dart';
 class DetailInfo extends StatelessWidget {
   final RestaurantDetailEntity detail;
 
-  const DetailInfo({
-    super.key,
-    required this.detail,
-  });
+  const DetailInfo({super.key, required this.detail});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +49,11 @@ class DetailInfo extends StatelessWidget {
                           SizedBox(height: 0.5.h),
                           Row(
                             children: [
-                              Icon(Icons.star, color: Color(0xFFEC6400), size: 6.w),
+                              Icon(
+                                Icons.star,
+                                color: Color(0xFFEC6400),
+                                size: 6.w,
+                              ),
                               SizedBox(width: 1.5.w),
                               Text(
                                 detail.rating.toString(),
@@ -103,7 +104,11 @@ class DetailInfo extends StatelessWidget {
                           SizedBox(height: 0.5.h),
                           Row(
                             children: [
-                              Icon(Icons.location_on_outlined, color: AppColors.primary, size: 5.w),
+                              Icon(
+                                Icons.location_on_outlined,
+                                color: AppColors.primary,
+                                size: 5.w,
+                              ),
                               SizedBox(width: 1.5.w),
                               Expanded(
                                 child: Text(
@@ -132,7 +137,11 @@ class DetailInfo extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(Icons.place_outlined, color: AppColors.textSecondaryOf(context), size: 5.w),
+              Icon(
+                Icons.place_outlined,
+                color: AppColors.textSecondaryOf(context),
+                size: 5.w,
+              ),
               SizedBox(width: 2.w),
               Expanded(
                 child: Text(
@@ -187,27 +196,33 @@ class DetailInfo extends StatelessWidget {
             child: Wrap(
               spacing: 2.w,
               runSpacing: 1.h,
-              children: detail.categories
-                  .map((category) => Container(
-                        padding: EdgeInsets.symmetric(horizontal: 3.5.w, vertical: 0.8.h),
-                        decoration: BoxDecoration(
-                          color: AppColors.primary.withOpacity(0.08),
-                          borderRadius: BorderRadius.circular(1.5.w),
-                          border: Border.all(
-                            color: AppColors.primary.withOpacity(0.2),
-                            width: 1,
+              children:
+                  detail.categories
+                      .map(
+                        (category) => Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 3.5.w,
+                            vertical: 0.8.h,
+                          ),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary.withOpacity(0.08),
+                            borderRadius: BorderRadius.circular(1.5.w),
+                            border: Border.all(
+                              color: AppColors.primary.withOpacity(0.2),
+                              width: 1,
+                            ),
+                          ),
+                          child: Text(
+                            category.name,
+                            style: AppTextStyles.bodySmall.copyWith(
+                              color: AppColors.primary,
+                              fontSize: 14.5.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                        child: Text(
-                          category.name,
-                          style: AppTextStyles.bodySmall.copyWith(
-                            color: AppColors.primary,
-                            fontSize: 14.5.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ))
-                  .toList(),
+                      )
+                      .toList(),
             ),
           ),
           SizedBox(height: 3.h),

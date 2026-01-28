@@ -8,7 +8,7 @@ import 'package:pawon_rasa/shared/core/di/modules/theme_module.dart';
 final getIt = GetIt.instance;
 
 /// Initialize all dependencies for the application
-/// 
+///
 /// Structure:
 /// 1. Shared dependencies (Network, Router, Theme)
 /// 2. Feature dependencies (Home, Detail)
@@ -22,4 +22,3 @@ Future<void> configureDependencies() async {
   registerHomeDependencies(getIt);
   registerDetailDependencies(getIt);
 }
-

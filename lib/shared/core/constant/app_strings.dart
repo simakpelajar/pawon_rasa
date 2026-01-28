@@ -10,7 +10,8 @@ class AppStrings {
   static const String homeTitle = 'Restaurant List';
   static const String searchHint = 'Search restaurants...';
   static const String emptyState = 'No restaurants found';
-  static const String emptyStateDescription = 'Try adjusting your search or check back later';
+  static const String emptyStateDescription =
+      'Try adjusting your search or check back later';
 
   // Detail
   static const String detailTitle = 'Restaurant Detail';
@@ -38,9 +39,11 @@ class AppStrings {
 
   // Validation
   static const String validationNameEmpty = 'Name cannot be empty';
-  static const String validationNameTooShort = 'Name must be at least 3 characters';
+  static const String validationNameTooShort =
+      'Name must be at least 3 characters';
   static const String validationReviewEmpty = 'Review cannot be empty';
-  static const String validationReviewTooShort = 'Review must be at least 10 characters';
+  static const String validationReviewTooShort =
+      'Review must be at least 10 characters';
 
   // Success
   static const String reviewSubmitted = 'Review submitted successfully';

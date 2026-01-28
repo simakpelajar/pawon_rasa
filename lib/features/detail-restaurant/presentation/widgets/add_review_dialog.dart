@@ -88,33 +88,36 @@ class AddReviewDialog extends HookWidget {
                     fontSize: 14.sp,
                   ),
                   filled: true,
-                  fillColor: Theme.of(context).brightness == Brightness.dark
-                      ? AppColors.surfaceVariantDark
-                      : AppColors.surfaceVariantLight,
+                  fillColor:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.surfaceVariantDark
+                          : AppColors.surfaceVariantLight,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(2.w),
                     borderSide: BorderSide(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white.withOpacity(0.12)
-                          : Colors.black.withOpacity(0.08),
+                      color:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white.withOpacity(0.12)
+                              : Colors.black.withOpacity(0.08),
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(2.w),
                     borderSide: BorderSide(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white.withOpacity(0.12)
-                          : Colors.black.withOpacity(0.08),
+                      color:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white.withOpacity(0.12)
+                              : Colors.black.withOpacity(0.08),
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(2.w),
-                    borderSide: BorderSide(
-                      color: AppColors.primary,
-                      width: 2,
-                    ),
+                    borderSide: BorderSide(color: AppColors.primary, width: 2),
                   ),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 4.w,
+                    vertical: 2.h,
+                  ),
                 ),
                 style: AppTextStyles.bodySmall.copyWith(
                   fontSize: 14.sp,
@@ -147,33 +150,36 @@ class AddReviewDialog extends HookWidget {
                     fontSize: 14.sp,
                   ),
                   filled: true,
-                  fillColor: Theme.of(context).brightness == Brightness.dark
-                      ? AppColors.surfaceVariantDark
-                      : AppColors.surfaceVariantLight,
+                  fillColor:
+                      Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.surfaceVariantDark
+                          : AppColors.surfaceVariantLight,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(2.w),
                     borderSide: BorderSide(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white.withOpacity(0.12)
-                          : Colors.black.withOpacity(0.08),
+                      color:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white.withOpacity(0.12)
+                              : Colors.black.withOpacity(0.08),
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(2.w),
                     borderSide: BorderSide(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? Colors.white.withOpacity(0.12)
-                          : Colors.black.withOpacity(0.08),
+                      color:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white.withOpacity(0.12)
+                              : Colors.black.withOpacity(0.08),
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(2.w),
-                    borderSide: BorderSide(
-                      color: AppColors.primary,
-                      width: 2,
-                    ),
+                    borderSide: BorderSide(color: AppColors.primary, width: 2),
                   ),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 4.w,
+                    vertical: 2.h,
+                  ),
                 ),
                 style: AppTextStyles.bodySmall.copyWith(
                   fontSize: 14.sp,
@@ -193,14 +199,17 @@ class AddReviewDialog extends HookWidget {
                 children: [
                   Expanded(
                     child: OutlinedButton(
-                      onPressed: isLoading ? null : () => Navigator.pop(context),
+                      onPressed:
+                          isLoading ? null : () => Navigator.pop(context),
                       style: OutlinedButton.styleFrom(
                         padding: EdgeInsets.symmetric(vertical: 2.h),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(2.w),
                         ),
                         side: BorderSide(
-                          color: AppColors.textSecondaryOf(context).withOpacity(0.3),
+                          color: AppColors.textSecondaryOf(
+                            context,
+                          ).withOpacity(0.3),
                         ),
                       ),
                       child: Text(
@@ -217,13 +226,17 @@ class AddReviewDialog extends HookWidget {
                   Expanded(
                     flex: 2,
                     child: ElevatedButton(
-                      onPressed: isLoading
-                          ? null
-                          : () {
-                              if (formKey.currentState!.validate()) {
-                                onSubmit(nameController.text, reviewController.text);
-                              }
-                            },
+                      onPressed:
+                          isLoading
+                              ? null
+                              : () {
+                                if (formKey.currentState!.validate()) {
+                                  onSubmit(
+                                    nameController.text,
+                                    reviewController.text,
+                                  );
+                                }
+                              },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         foregroundColor: Colors.white,
@@ -233,23 +246,24 @@ class AddReviewDialog extends HookWidget {
                         ),
                         elevation: 0,
                       ),
-                      child: isLoading
-                          ? SizedBox(
-                              width: 5.w,
-                              height: 5.w,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                                color: Colors.white,
+                      child:
+                          isLoading
+                              ? SizedBox(
+                                width: 5.w,
+                                height: 5.w,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              )
+                              : Text(
+                                'Submit Review',
+                                style: AppTextStyles.bodySmall.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15.sp,
+                                  color: Colors.white,
+                                ),
                               ),
-                            )
-                          : Text(
-                              'Submit Review',
-                              style: AppTextStyles.bodySmall.copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15.sp,
-                                color: Colors.white,
-                              ),
-                            ),
                     ),
                   ),
                 ],

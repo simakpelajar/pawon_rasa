@@ -11,12 +11,8 @@ abstract class RestaurantDetailRemoteDatasource {
       _RestaurantDetailRemoteDatasource;
 
   @GET('/detail/{id}')
-  Future<RestaurantDetailResponse> getRestaurantDetail(
-    @Path('id') String id,
-  );
+  Future<RestaurantDetailResponse> getRestaurantDetail(@Path('id') String id);
 
   @POST('/review')
-  Future<AddReviewResponse> addReview(
-    @Body() Map<String, String> body,
-  );
+  Future<AddReviewResponse> addReview(@Body() Map<String, String> body);
 }

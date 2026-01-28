@@ -23,6 +23,16 @@ class HomeController extends ChangeNotifier {
   String _selectedCity = CityFilter.all;
   String get selectedCity => _selectedCity;
 
+  Map<String, bool> _expandedDescriptions = {};
+  bool isDescriptionExpanded(String restaurantId) =>
+      _expandedDescriptions[restaurantId] ?? false;
+
+  void toggleDescriptionExpanded(String restaurantId) {
+    _expandedDescriptions[restaurantId] =
+        !(_expandedDescriptions[restaurantId] ?? false);
+    notifyListeners();
+  }
+
   Future<void> loadRestaurants() async {
     _state = HomeLoading();
     notifyListeners();

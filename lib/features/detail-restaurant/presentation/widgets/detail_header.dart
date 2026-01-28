@@ -42,9 +42,7 @@ class DetailHeader extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             if (isSkeleton)
-              Container(
-                color: AppColors.surfaceVariantOf(context),
-              )
+              Container(color: AppColors.surfaceVariantOf(context))
             else
               Image.network(
                 AppAssets.getImageUrl(detail.pictureId, size: ImageSize.large),
@@ -52,7 +50,11 @@ class DetailHeader extends StatelessWidget {
                 errorBuilder: (context, error, stackTrace) {
                   return Container(
                     color: AppColors.surfaceVariantOf(context),
-                    child: Icon(Icons.restaurant, size: 100, color: AppColors.textSecondaryOf(context)),
+                    child: Icon(
+                      Icons.restaurant,
+                      size: 100,
+                      color: AppColors.textSecondaryOf(context),
+                    ),
                   );
                 },
               ),

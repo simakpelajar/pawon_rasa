@@ -11,7 +11,7 @@ class AppColors {
   // Accent Colors
   static const Color accent = Color(0xFFFF6B35);
   static const Color accentDark = Color(0xFFD64A1F);
-  
+
   // Secondary Color
   static const Color secondary = Color(0xFFFF8F00);
 
@@ -32,35 +32,35 @@ class AppColors {
   static const Color textHintDark = Color(0xFF757575);
 
   // Context-aware color getters (use these for dynamic theming)
-  static Color backgroundOf(BuildContext context) => 
-      Theme.of(context).brightness == Brightness.dark 
-        ? backgroundDark 
-        : backgroundLight;
+  static Color backgroundOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? backgroundDark
+          : backgroundLight;
 
-  static Color surfaceOf(BuildContext context) => 
-      Theme.of(context).brightness == Brightness.dark 
-        ? surfaceDark 
-        : surfaceLight;
+  static Color surfaceOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? surfaceDark
+          : surfaceLight;
 
-  static Color surfaceVariantOf(BuildContext context) => 
-      Theme.of(context).brightness == Brightness.dark 
-        ? surfaceVariantDark 
-        : surfaceVariantLight;
+  static Color surfaceVariantOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? surfaceVariantDark
+          : surfaceVariantLight;
 
-  static Color textPrimaryOf(BuildContext context) => 
-      Theme.of(context).brightness == Brightness.dark 
-        ? textPrimaryDark 
-        : textPrimaryLight;
+  static Color textPrimaryOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? textPrimaryDark
+          : textPrimaryLight;
 
-  static Color textSecondaryOf(BuildContext context) => 
-      Theme.of(context).brightness == Brightness.dark 
-        ? textSecondaryDark 
-        : textSecondaryLight;
+  static Color textSecondaryOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? textSecondaryDark
+          : textSecondaryLight;
 
-  static Color textHintOf(BuildContext context) => 
-      Theme.of(context).brightness == Brightness.dark 
-        ? textHintDark 
-        : textHintLight;
+  static Color textHintOf(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.dark
+          ? textHintDark
+          : textHintLight;
 
   // Static colors for const TextStyles (backward compatibility)
   static const Color background = backgroundLight;
@@ -81,39 +81,41 @@ class AppColors {
 
   // Context-aware shadows
   static List<BoxShadow> shadowOf(BuildContext context) => [
-        BoxShadow(
-          color: Theme.of(context).brightness == Brightness.dark
+    BoxShadow(
+      color:
+          Theme.of(context).brightness == Brightness.dark
               ? Colors.black.withOpacity(0.3)
               : Colors.black.withOpacity(0.08),
-          blurRadius: 8,
-          offset: const Offset(0, 2),
-        ),
-      ];
+      blurRadius: 8,
+      offset: const Offset(0, 2),
+    ),
+  ];
 
   static List<BoxShadow> shadowLargeOf(BuildContext context) => [
-        BoxShadow(
-          color: Theme.of(context).brightness == Brightness.dark
+    BoxShadow(
+      color:
+          Theme.of(context).brightness == Brightness.dark
               ? Colors.black.withOpacity(0.5)
               : Colors.black.withOpacity(0.12),
-          blurRadius: 16,
-          offset: const Offset(0, 4),
-        ),
-      ];
+      blurRadius: 16,
+      offset: const Offset(0, 4),
+    ),
+  ];
 
   // Legacy shadows (for backward compatibility)
   static List<BoxShadow> get shadow => [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.08),
-          blurRadius: 8,
-          offset: const Offset(0, 2),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withOpacity(0.08),
+      blurRadius: 8,
+      offset: const Offset(0, 2),
+    ),
+  ];
 
   static List<BoxShadow> get shadowLarge => [
-        BoxShadow(
-          color: Colors.black.withOpacity(0.12),
-          blurRadius: 16,
-          offset: const Offset(0, 4),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withOpacity(0.12),
+      blurRadius: 16,
+      offset: const Offset(0, 4),
+    ),
+  ];
 }

@@ -7,10 +7,7 @@ import 'package:sizer/sizer.dart';
 class MenuSection extends StatelessWidget {
   final MenusEntity menus;
 
-  const MenuSection({
-    super.key,
-    required this.menus,
-  });
+  const MenuSection({super.key, required this.menus});
 
   @override
   Widget build(BuildContext context) {
@@ -103,31 +100,39 @@ class _MenuCategory extends StatelessWidget {
           child: Wrap(
             spacing: 2.5.w,
             runSpacing: 1.2.h,
-            children: items
-                .map((item) => Container(
-                      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark
-                            ? AppColors.surfaceVariantDark
-                            : AppColors.surfaceVariantLight,
-                        borderRadius: BorderRadius.circular(2.w),
-                        border: Border.all(
-                          color: Theme.of(context).brightness == Brightness.dark
-                              ? Colors.white.withOpacity(0.08)
-                              : Colors.black.withOpacity(0.05),
-                          width: 1,
+            children:
+                items
+                    .map(
+                      (item) => Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 4.w,
+                          vertical: 1.h,
+                        ),
+                        decoration: BoxDecoration(
+                          color:
+                              Theme.of(context).brightness == Brightness.dark
+                                  ? AppColors.surfaceVariantDark
+                                  : AppColors.surfaceVariantLight,
+                          borderRadius: BorderRadius.circular(2.w),
+                          border: Border.all(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.white.withOpacity(0.08)
+                                    : Colors.black.withOpacity(0.05),
+                            width: 1,
+                          ),
+                        ),
+                        child: Text(
+                          item.name,
+                          style: AppTextStyles.bodySmall.copyWith(
+                            color: AppColors.textPrimaryOf(context),
+                            fontSize: 14.5.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                      child: Text(
-                        item.name,
-                        style: AppTextStyles.bodySmall.copyWith(
-                          color: AppColors.textPrimaryOf(context),
-                          fontSize: 14.5.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ))
-                .toList(),
+                    )
+                    .toList(),
           ),
         ),
       ],

@@ -109,7 +109,6 @@ class StickySearchDelegate extends SliverPersistentHeaderDelegate {
 
                   SizedBox(width: AppSizes.paddingM),
 
-
                   SizedBox(
                     width: 25.w,
                     child: Container(
@@ -176,7 +175,12 @@ class StickySearchDelegate extends SliverPersistentHeaderDelegate {
                                                 : Colors.grey[600],
                                       ),
                                       SizedBox(width: 2.w),
-                                      Text(city),
+                                      Expanded(
+                                        child: Text(
+                                          city,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 );

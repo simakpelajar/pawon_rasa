@@ -5,12 +5,8 @@ import 'package:pawon_rasa/shared/core/infrastructure/network/dio_provider.dart'
 
 void registerNetworkDependencies(GetIt getIt) {
   // Register Config
-  getIt.registerLazySingleton<Map<String, String>>(
-    () => ConfigProvider.config,
-  );
+  getIt.registerLazySingleton<Map<String, String>>(() => ConfigProvider.config);
 
   // Register Dio
-  getIt.registerLazySingleton<Dio>(
-    () => DioFactory.create(),
-  );
+  getIt.registerLazySingleton<Dio>(() => DioFactory.create());
 }

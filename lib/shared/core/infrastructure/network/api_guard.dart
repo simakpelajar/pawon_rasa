@@ -27,7 +27,6 @@ class ApiGuard {
   }
 
   static bool hasValidPaginatedListData(Map<String, dynamic> json) {
-    return json['data'] is Map<String, dynamic> &&
-           json['data']['data'] is List;
+    return json['data'] is Map<String, dynamic> && json['data']['data'] is List;
   }
 }

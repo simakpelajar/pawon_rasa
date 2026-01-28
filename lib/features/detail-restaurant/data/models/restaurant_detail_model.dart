@@ -5,9 +5,7 @@ part 'restaurant_detail_model.g.dart';
 
 @freezed
 class CategoryModel with _$CategoryModel {
-  const factory CategoryModel({
-    required String name,
-  }) = _CategoryModel;
+  const factory CategoryModel({required String name}) = _CategoryModel;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) =>
       _$CategoryModelFromJson(json);
@@ -15,9 +13,7 @@ class CategoryModel with _$CategoryModel {
 
 @freezed
 class MenuItemModel with _$MenuItemModel {
-  const factory MenuItemModel({
-    required String name,
-  }) = _MenuItemModel;
+  const factory MenuItemModel({required String name}) = _MenuItemModel;
 
   factory MenuItemModel.fromJson(Map<String, dynamic> json) =>
       _$MenuItemModelFromJson(json);

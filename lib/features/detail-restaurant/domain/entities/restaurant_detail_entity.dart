@@ -25,10 +25,7 @@ class MenusEntity extends Equatable {
   final List<MenuItemEntity> foods;
   final List<MenuItemEntity> drinks;
 
-  const MenusEntity({
-    required this.foods,
-    required this.drinks,
-  });
+  const MenusEntity({required this.foods, required this.drinks});
 
   @override
   List<Object?> get props => [foods, drinks];
@@ -78,15 +75,15 @@ class RestaurantDetailEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        description,
-        city,
-        address,
-        pictureId,
-        categories,
-        menus,
-        rating,
-        customerReviews,
-      ];
+    id,
+    name,
+    description,
+    city,
+    address,
+    pictureId,
+    categories,
+    menus,
+    rating,
+    customerReviews,
+  ];
 }

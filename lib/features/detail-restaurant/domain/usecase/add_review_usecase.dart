@@ -13,10 +13,6 @@ class AddReviewUseCase {
     required String name,
     required String review,
   }) async {
-    return await repository.addReview(
-      id: id,
-      name: name,
-      review: review,
-    );
+    return await repository.addReview(id: id, name: name, review: review);
   }
 }

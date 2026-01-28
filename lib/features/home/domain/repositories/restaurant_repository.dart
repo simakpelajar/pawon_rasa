@@ -5,5 +5,6 @@ import 'package:pawon_rasa/shared/core/types/failure.dart';
 abstract class RestaurantRepository {
   Future<Either<Failure, List<RestaurantEntity>>> getRestaurants();
   Future<Either<Failure, List<RestaurantEntity>>> searchRestaurants(
-      String query);
+    String query,
+  );
 }

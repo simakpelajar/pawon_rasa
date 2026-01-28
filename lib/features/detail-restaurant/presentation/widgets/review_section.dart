@@ -34,7 +34,11 @@ class ReviewSection extends StatelessWidget {
                       color: AppColors.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(AppSizes.radiusL),
                     ),
-                    child: Icon(Icons.rate_review, color: AppColors.primary, size: AppSizes.iconL),
+                    child: Icon(
+                      Icons.rate_review,
+                      color: AppColors.primary,
+                      size: AppSizes.iconL,
+                    ),
                   ),
                   SizedBox(width: AppSizes.paddingL),
                   Text(
@@ -61,7 +65,11 @@ class ReviewSection extends StatelessWidget {
                 ),
                 child: IconButton(
                   onPressed: onAddReview,
-                  icon: Icon(Icons.add_comment, color: Colors.white, size: AppSizes.iconL),
+                  icon: Icon(
+                    Icons.add_comment,
+                    color: Colors.white,
+                    size: AppSizes.iconL,
+                  ),
                   tooltip: AppStrings.addReviewButton,
                 ),
               ),
@@ -77,7 +85,9 @@ class ReviewSection extends StatelessWidget {
                     Icon(
                       Icons.chat_bubble_outline,
                       size: 15.w,
-                      color: AppColors.textSecondaryOf(context).withOpacity(0.5),
+                      color: AppColors.textSecondaryOf(
+                        context,
+                      ).withOpacity(0.5),
                     ),
                     SizedBox(height: AppSizes.paddingM),
                     Text(
@@ -113,9 +123,10 @@ class _ReviewCard extends StatelessWidget {
         color: AppColors.surfaceOf(context),
         borderRadius: BorderRadius.circular(AppSizes.radiusL),
         border: Border.all(
-          color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.white.withOpacity(0.12)
-              : Colors.black.withOpacity(0.08),
+          color:
+              Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white.withOpacity(0.12)
+                  : Colors.black.withOpacity(0.08),
           width: 1.2,
         ),
         boxShadow: [
@@ -123,7 +134,7 @@ class _ReviewCard extends StatelessWidget {
             color: Colors.black.withOpacity(0.06),
             blurRadius: 3,
             offset: Offset(0, 1),
-          )
+          ),
         ],
       ),
       child: Column(
@@ -136,10 +147,7 @@ class _ReviewCard extends StatelessWidget {
                 height: 10.w,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      AppColors.primary,
-                      AppColors.primaryLight,
-                    ],
+                    colors: [AppColors.primary, AppColors.primaryLight],
                   ),
                   shape: BoxShape.circle,
                   boxShadow: [
@@ -201,9 +209,10 @@ class _ReviewCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(AppSizes.paddingM),
             decoration: BoxDecoration(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? AppColors.surfaceVariantDark
-                  : AppColors.surfaceVariantLight,
+              color:
+                  Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.surfaceVariantDark
+                      : AppColors.surfaceVariantLight,
               borderRadius: BorderRadius.circular(AppSizes.radiusM),
             ),
             child: Text(

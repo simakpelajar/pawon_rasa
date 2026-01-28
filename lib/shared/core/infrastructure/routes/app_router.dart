@@ -27,13 +27,14 @@ class AppRouter {
           },
         ),
       ],
-      errorBuilder: (context, state) => Scaffold(
-        body: Center(
-          child: Text(
-            'Error: ${state.error?.toString() ?? "Unknown error"}',
+      errorBuilder:
+          (context, state) => Scaffold(
+            body: Center(
+              child: Text(
+                'Error: ${state.error?.toString() ?? "Unknown error"}',
+              ),
+            ),
           ),
-        ),
-      ),
       debugLogDiagnostics: kDebugMode,
     );
   }

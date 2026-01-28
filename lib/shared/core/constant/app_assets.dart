@@ -9,13 +9,16 @@ class AppAssets {
       'assets/icons/ic_top_restaurants.png';
 
   static const String baseImageUrl =
-    'https://restaurant-api.dicoding.dev/images/medium/';
+      'https://restaurant-api.dicoding.dev/images/medium/';
   static const String smallImageUrl =
-    'https://restaurant-api.dicoding.dev/images/small/';
+      'https://restaurant-api.dicoding.dev/images/small/';
   static const String largeImageUrl =
-    'https://restaurant-api.dicoding.dev/images/large/';
+      'https://restaurant-api.dicoding.dev/images/large/';
 
-  static String getImageUrl(String pictureId, {ImageSize size = ImageSize.medium}) {
+  static String getImageUrl(
+    String pictureId, {
+    ImageSize size = ImageSize.medium,
+  }) {
     switch (size) {
       case ImageSize.small:
         return '$smallImageUrl$pictureId';

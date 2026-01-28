@@ -5,4 +5,3 @@ class ConfigProvider {
 
   static Map<String, String> get config => _config;
 }
-

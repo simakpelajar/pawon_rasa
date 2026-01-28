@@ -90,29 +90,32 @@ class HomeScreen extends HookWidget {
                             vertical: AppSizes.paddingM,
                           ),
                           sliver: SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                              (context, index) {
-                                return Padding(
-                                  padding: EdgeInsets.only(bottom: AppSizes.paddingM),
-                                  child: Skeletonizer(
-                                    enabled: true,
-                                    child: RestaurantCardNew(
-                                      restaurant: RestaurantEntity(
-                                        id: 'skeleton',
-                                        name: 'Restaurant Name Here',
-                                        description: 'Description text goes here with some content to show',
-                                        pictureId: '',
-                                        city: 'City Name',
-                                        rating: 4.5,
-                                      ),
-                                      isSkeleton: true,
-                                      onTap: () {},
+                            delegate: SliverChildBuilderDelegate((
+                              context,
+                              index,
+                            ) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                  bottom: AppSizes.paddingM,
+                                ),
+                                child: Skeletonizer(
+                                  enabled: true,
+                                  child: RestaurantCardNew(
+                                    restaurant: RestaurantEntity(
+                                      id: 'skeleton',
+                                      name: 'Restaurant Name Here',
+                                      description:
+                                          'Description text goes here with some content to show',
+                                      pictureId: '',
+                                      city: 'City Name',
+                                      rating: 4.5,
                                     ),
+                                    isSkeleton: true,
+                                    onTap: () {},
                                   ),
-                                );
-                              },
-                              childCount: 5,
-                            ),
+                                ),
+                              );
+                            }, childCount: 5),
                           ),
                         ),
                     loaded:

@@ -25,15 +25,16 @@ class SearchBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = isOnPrimaryBackground
-        ? Colors.white
-        : AppColors.surfaceOf(context);
-    final borderColor = isOnPrimaryBackground
-        ? Colors.white.withOpacity(0.8)
-        : AppColors.surfaceVariantOf(context);
-    final iconColor = isOnPrimaryBackground
-        ? AppColors.primary
-        : AppColors.textSecondaryOf(context);
+    final bgColor =
+        isOnPrimaryBackground ? Colors.white : AppColors.surfaceOf(context);
+    final borderColor =
+        isOnPrimaryBackground
+            ? Colors.white.withOpacity(0.8)
+            : AppColors.surfaceVariantOf(context);
+    final iconColor =
+        isOnPrimaryBackground
+            ? AppColors.primary
+            : AppColors.textSecondaryOf(context);
     final textColor = AppColors.textPrimaryOf(context);
 
     return Container(
@@ -41,13 +42,16 @@ class SearchBarWidget extends StatelessWidget {
         color: bgColor,
         borderRadius: BorderRadius.circular(8.w),
         border: Border.all(color: borderColor),
-        boxShadow: isOnPrimaryBackground ? [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.08),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ] : AppColors.shadowOf(context),
+        boxShadow:
+            isOnPrimaryBackground
+                ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ]
+                : AppColors.shadowOf(context),
       ),
       padding: EdgeInsets.symmetric(horizontal: 4.w),
       height: 6.5.h,
@@ -61,10 +65,7 @@ class SearchBarWidget extends StatelessWidget {
               onChanged: onChanged,
               onSubmitted: onSubmitted,
               textInputAction: TextInputAction.search,
-              style: TextStyle(
-                color: textColor,
-                fontSize: 14.sp,
-              ),
+              style: TextStyle(color: textColor, fontSize: 14.sp),
               decoration: InputDecoration(
                 isDense: true,
                 hintText: hintText,
