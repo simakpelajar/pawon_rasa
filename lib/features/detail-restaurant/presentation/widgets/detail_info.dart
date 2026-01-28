@@ -249,13 +249,15 @@ class DetailInfo extends StatelessWidget {
           ),
           SizedBox(height: 2.h),
           Padding(
-            padding: EdgeInsets.only(left: 4.2.w),
+            padding: EdgeInsets.symmetric(horizontal: 4.2.w),
             child: Text(
               detail.description,
               style: AppTextStyles.bodySmall.copyWith(
                 color: AppColors.textSecondaryOf(context),
                 fontSize: 15.5.sp,
-                height: 1.8,
+                height: 1.65,
+                letterSpacing: 0.15,
+                wordSpacing: 1.5,
               ),
               textAlign: TextAlign.justify,
             ),

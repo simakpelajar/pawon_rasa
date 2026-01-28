@@ -305,8 +305,11 @@ class RestaurantCardNew extends StatelessWidget {
                           style: AppTextStyles.bodySmall.copyWith(
                             color: AppColors.textSecondaryOf(context),
                             fontSize: 13.sp,
-                            height: 1.6,
+                            height: 1.65,
+                            letterSpacing: 0.15,
+                            wordSpacing: 1.5,
                           ),
+                          textAlign: TextAlign.justify,
                         ),
                       ),
                       crossFadeState:
