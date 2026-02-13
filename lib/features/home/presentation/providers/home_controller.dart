@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pawon_rasa/features/home/domain/entities/restaurant_entity.dart';
-import 'package:pawon_rasa/features/home/domain/states/home_state.dart';
+import 'package:pawon_rasa/features/home/presentation/states/home_state.dart';
 import 'package:pawon_rasa/features/home/domain/types/city_filter.dart';
 import 'package:pawon_rasa/features/home/domain/usecase/get_restaurants_usecase.dart';
 import 'package:pawon_rasa/features/home/domain/usecase/search_restaurants_usecase.dart';
@@ -23,13 +23,15 @@ class HomeController extends ChangeNotifier {
   String _selectedCity = CityFilter.all;
   String get selectedCity => _selectedCity;
 
-  Map<String, bool> _expandedDescriptions = {};
-  bool isDescriptionExpanded(String restaurantId) =>
-      _expandedDescriptions[restaurantId] ?? false;
+
+  final Map<String, bool> _expandedCards = {};
+
+  bool isDescriptionExpanded(String restaurantId) {
+    return _expandedCards[restaurantId] ?? false;
+  }
 
   void toggleDescriptionExpanded(String restaurantId) {
-    _expandedDescriptions[restaurantId] =
-        !(_expandedDescriptions[restaurantId] ?? false);
+    _expandedCards[restaurantId] = !(_expandedCards[restaurantId] ?? false);
     notifyListeners();
   }
 

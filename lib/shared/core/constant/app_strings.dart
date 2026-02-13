@@ -47,4 +47,56 @@ class AppStrings {
 
   // Success
   static const String reviewSubmitted = 'Review submitted successfully';
+
+  // Home Screen
+  static const String homeInitialMessage = 'Start searching your favorite restaurants!';
+  static const String favoriteAdded = 'Added to favorites';
+  static const String favoriteRemoved = 'Removed from favorites';
+
+  // Favorites Screen
+  static const String favoritesTitle = 'Favorites';
+  static const String favoritesInitialMessage = 'Initialize...';
+  static const String favoritesEmptyTitle = 'No Favorites Yet';
+  static const String favoritesEmptyDescription = 'Start adding restaurants to your favorites!';
+  static const String removeFromFavoritesTitle = 'Remove from Favorites?';
+  static const String removedFromFavorites = 'removed from favorites';
+  static const String removeButton = 'Remove';
+
+  // Settings Screen
+  static const String settingsTitle = 'Settings';
+  static const String dailyRemindersTitle = 'Daily Reminders';
+  static const String dailyRemindersDescription = 'Enable daily meal reminders';
+    static const String testReminderButton = 'Test Reminder Now';
+    static const String testReminderTitle = 'Test Reminder';
+    static const String testReminderDescription = 'This is a test reminder';
+    static const String testReminderSentMessage = 'Test reminder sent';
+    static const String testReminderEnableFirstMessage =
+            'Enable daily reminders to test';
+  static const String yourRemindersLabel = 'Your Reminders';
+  static const String noRemindersTitle = 'No Reminders Yet';
+  static const String noRemindersDescription = 'Add your first reminder below';
+  static const String addReminderTitle = 'Add Reminder';
+  static const String editReminderTitle = 'Edit Reminder';
+  static const String reminderTitleLabel = 'Reminder Title';
+  static const String reminderTitleHint = 'e.g., Lunch Time';
+  static const String descriptionLabel = 'Description';
+  static const String descriptionHint = 'What should you do?';
+  static const String timeLabel = 'Time';
+  static const String timeHint = 'Select time';
+  static const String addButton = 'Add';
+  static const String updateButton = 'Update';
+  static const String deleteReminderTitle = 'Delete Reminder?';
+  static const String deleteConfirmMessage = 'Are you sure you want to delete';
+  static const String deleteButton = 'Delete';
+  static const String editButton = 'Edit';
+  static const String reminderAddedMessage = 'Reminder added successfully';
+  static const String reminderUpdatedMessage = 'Reminder updated successfully';
+  static const String reminderDeletedMessage = 'Reminder deleted';
+  static const String titleEmptyError = 'Please enter a title';
+
+    // Default Daily Reminder
+    static const String defaultReminderTitle = 'Makan siang';
+    static const String defaultReminderDescription =
+            'Saatnya makan siang. Jangan lupa makan ya!';
+    static const String defaultReminderTime = '11:00';
 }

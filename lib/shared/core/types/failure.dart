@@ -37,6 +37,11 @@ class HttpFailure extends Failure {
   const HttpFailure({this.code, this.message, super.stackTrace});
 }
 
+class DatabaseFailure extends Failure {
+  final String message;
+  const DatabaseFailure(this.message, {super.stackTrace});
+}
+
 class UnknownFailure extends Failure {
   final Object error;
   const UnknownFailure(this.error, {required super.stackTrace});
@@ -55,6 +60,7 @@ String errorToMessage(Object error) {
         'Server error. ${message.isEmpty ? "Try again." : message}',
       HttpFailure(:final code, :final message) =>
         'HTTP ${code ?? "-"}: ${message ?? "Something went wrong."}',
+      DatabaseFailure(:final message) => message,
       UnknownFailure(:final error) => 'Unexpected error: $error',
       _ => 'Something went wrong.',
     };

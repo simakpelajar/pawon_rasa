@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pawon_rasa/features/detail-restaurant/presentation/screens/detail_screen.dart';
-import 'package:pawon_rasa/features/home/presentation/screens/home_screen.dart';
 import 'package:pawon_rasa/shared/core/infrastructure/routes/route_name.dart';
+import 'package:pawon_rasa/shared/presentation/screens/main_screen.dart';
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
@@ -16,7 +16,7 @@ class AppRouter {
         GoRoute(
           path: '/',
           name: RouteName.home,
-          builder: (context, state) => const HomeScreen(),
+          builder: (context, state) => const MainScreen(),
         ),
         GoRoute(
           path: '/detail-restaurant/:id',

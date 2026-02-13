@@ -10,8 +10,12 @@ sealed class HomeState {
   }) {
     if (this is HomeInitial) return initial();
     if (this is HomeLoading) return loading();
-    if (this is HomeLoaded) return loaded((this as HomeLoaded).restaurants);
-    if (this is HomeError) return error((this as HomeError).failure);
+    if (this is HomeLoaded) {
+      return loaded((this as HomeLoaded).restaurants);
+    }
+    if (this is HomeError) {
+      return error((this as HomeError).failure);
+    }
     throw Exception('Unknown state');
   }
 }

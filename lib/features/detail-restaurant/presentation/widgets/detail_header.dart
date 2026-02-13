@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:pawon_rasa/features/detail-restaurant/domain/entities/restaurant_detail_entity.dart';
+import 'package:pawon_rasa/features/favorites/domain/entities/favorite_restaurant_entity.dart';
+import 'package:pawon_rasa/features/favorites/presentation/providers/favorites_controller.dart';
 import 'package:pawon_rasa/shared/core/constant/app_assets.dart';
 import 'package:pawon_rasa/shared/core/constant/app_colors.dart';
+import 'package:pawon_rasa/shared/core/di/injection.dart';
 import 'package:sizer/sizer.dart';
 
-class DetailHeader extends StatelessWidget {
+class DetailHeader extends HookWidget {
   final RestaurantDetailEntity detail;
   final bool isSkeleton;
 
@@ -16,10 +20,68 @@ class DetailHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoritesController = useMemoized(() => getIt<FavoritesController>());
+    final isFavorite = useState(false);
+
+    useEffect(() {
+      if (!isSkeleton) {
+        favoritesController.checkIsFavorite(detail.id).then((value) {
+          isFavorite.value = value;
+        });
+      }
+      return null;
+    }, [detail.id]);
+
     return SliverAppBar(
       expandedHeight: 280,
       pinned: true,
       backgroundColor: AppColors.primary,
+      actions: [
+        if (!isSkeleton)
+          Container(
+            margin: EdgeInsets.only(right: 2.w),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.3),
+              shape: BoxShape.circle,
+            ),
+            child: IconButton(
+              icon: Icon(
+                isFavorite.value ? Icons.favorite : Icons.favorite_border,
+                color: isFavorite.value ? Colors.red : Colors.white,
+                size: 24.sp,
+              ),
+              onPressed: () async {
+                final favorite = FavoriteRestaurantEntity(
+                  id: detail.id,
+                  name: detail.name,
+                  description: detail.description,
+                  pictureId: detail.pictureId,
+                  city: detail.city,
+                  rating: detail.rating,
+                  createdAt: DateTime.now(),
+                );
+
+                await favoritesController.toggleFavorite(favorite);
+                final newStatus = await favoritesController.checkIsFavorite(detail.id);
+                isFavorite.value = newStatus;
+
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        newStatus
+                            ? 'Added to favorites'
+                            : 'Removed from favorites',
+                      ),
+                      duration: const Duration(seconds: 2),
+                      behavior: SnackBarBehavior.floating,
+                    ),
+                  );
+                }
+              },
+            ),
+          ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         titlePadding: EdgeInsets.only(left: 12.w, right: 16.w, bottom: 2.h),
         title: Text(
