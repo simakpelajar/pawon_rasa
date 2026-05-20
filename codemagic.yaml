@@ -6,10 +6,6 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
-    
-    # Ini penting — disable integrations default
-    integrations:
-      app_store_connect: none
 
     scripts:
       - name: Flutter pub get
@@ -19,7 +15,9 @@ workflows:
         script: |
           rm -rf ios/
           flutter create --platforms=ios .
+          echo "=== ls ios/ ==="
           ls -la ios/
+          echo "=== Podfile ==="
           cat ios/Podfile
 
       - name: Precache iOS
