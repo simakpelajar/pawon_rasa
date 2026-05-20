@@ -1,0 +1,45 @@
+workflows:
+  ios-workflow:
+    name: iOS & Android Build
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+
+    scripts:
+      - name: Regenerate iOS if scheme missing
+        script: |
+          if [ ! -f ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme ]; then
+            echo "Regenerating iOS project..."
+            rm -rf ios/
+            flutter create --platforms=ios .
+          fi
+
+      - name: Flutter pub get
+        script: |
+          flutter pub get
+
+      - name: Pod install
+        script: |
+          cd ios && pod install
+
+      - name: Build iOS
+        script: |
+          flutter build ipa --release --no-codesign
+
+      - name: Build Android
+        script: |
+          flutter build apk --release
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - build/app/outputs/flutter-apk/*.apk
+
+    publishing:
+      email:
+        recipients:
+          - bebenmerayap@gmail.com
+        notify:
+          success: true
+          failure: true
