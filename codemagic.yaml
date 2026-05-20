@@ -8,17 +8,21 @@ workflows:
       cocoapods: default
 
     scripts:
-      - name: Regenerate iOS if scheme missing
+      - name: Flutter pub get
         script: |
-          if [ ! -f ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme ]; then
-            echo "Regenerating iOS project..."
+          flutter pub get
+
+      - name: Regenerate iOS if missing
+        script: |
+          if [ ! -f ios/Podfile ]; then
+            echo "Podfile not found, regenerating iOS project..."
             rm -rf ios/
             flutter create --platforms=ios .
           fi
 
-      - name: Flutter pub get
+      - name: Flutter precache iOS
         script: |
-          flutter pub get
+          flutter precache --ios
 
       - name: Pod install
         script: |
