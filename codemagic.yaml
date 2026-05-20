@@ -1,44 +1,40 @@
 workflows:
   ios-workflow:
-    name: iOS & Android Build
+    name: iOS Build
     max_build_duration: 60
     environment:
       flutter: stable
       xcode: latest
       cocoapods: default
+    
+    # Ini penting — disable integrations default
+    integrations:
+      app_store_connect: none
 
     scripts:
       - name: Flutter pub get
-        script: |
-          flutter pub get
+        script: flutter pub get
 
-      - name: Regenerate iOS if missing
+      - name: Recreate iOS
         script: |
-          if [ ! -f ios/Podfile ]; then
-            echo "Podfile not found, regenerating iOS project..."
-            rm -rf ios/
-            flutter create --platforms=ios .
-          fi
+          rm -rf ios/
+          flutter create --platforms=ios .
+          ls -la ios/
+          cat ios/Podfile
 
-      - name: Flutter precache iOS
-        script: |
-          flutter precache --ios
+      - name: Precache iOS
+        script: flutter precache --ios
 
       - name: Pod install
         script: |
-          cd ios && pod install
+          cd ios && pod install --repo-update
 
       - name: Build iOS
         script: |
           flutter build ipa --release --no-codesign
 
-      - name: Build Android
-        script: |
-          flutter build apk --release
-
     artifacts:
       - build/ios/ipa/*.ipa
-      - build/app/outputs/flutter-apk/*.apk
 
     publishing:
       email:
@@ -47,4 +43,3 @@ workflows:
         notify:
           success: true
           failure: true
-  
